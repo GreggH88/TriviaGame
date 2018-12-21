@@ -19,17 +19,29 @@
 
 .quizContainerWrap {
   margin-top: 30px;
+}
+
+#wrapper {
   width: 560px;
+  margin: auto;
+}
+#show-timer {
+  border-style: solid;
+  border-color: red;
+  height: auto;
+  float: right;
+  font-size: 20px;
 }
 
 #quiz {
+  width: 100%;
   margin: auto;
   border-style: groove;
   opacity: .75;
 }
 
 #submit {
-  /* float: right; */
+  float: right;
 }
 
 .multiChoice {
