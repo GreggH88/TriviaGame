@@ -1,8 +1,12 @@
+
+
+// store html objects to manipulate in js
 var quizContainer = document.getElementById('quiz');
 var resultsContainer = document.getElementById('results');
 var submitButton = document.getElementById('submit');
-var questionList = [
-  {
+
+// list of questions and answers
+var questionList = [{
     question: "Where is albaqerque?",
     answers: {
       a: "How should I know?",
@@ -30,27 +34,31 @@ var questionList = [
     correctAnswer: "c"
   }
 ];
-
+// function containing quiz logic
 function runQuiz() {
-var output = [];
-questionList.forEach(
-  (currentQuestion, questionNumber) => {
-var answers = [];
-for(letter in currentQuestion.answers){
-  answers.push(
-    `<label>
+  // stores html output in an array
+  var output = [];
+  questionList.forEach(
+    (currentQuestion, questionNumber) => {
+      var answers = [];
+      // for each letter in answers array of currentQuestion, create a radio button with associated answer, pushing it into the variable array answers.
+      for (letter in currentQuestion.answers) {
+        answers.push(
+          `<label class="multiChoice">
       <input type="radio"
-name="question${questionNumber}"
-value="${letter}"> ${letter} : ${currentQuestion.answers[letter]}
-</label>`
-);
-}
-output.push(`<div class="question"> ${currentQuestion.question} </div>
-<div class="answers"> ${answers.join('')} </div>`
-);
-  }
-);
-quizContainer.innerHTML = output.join('');
+name="question${questionNumber}" value="${letter}"> 
+            ${letter} : 
+            ${currentQuestion.answers[letter]}
+          </label>`
+        );
+      }
+      // adds the html for this question and its answers to the output array
+      // then joins the output array into a string with .join('')
+      output.push(`<div class="question"> ${currentQuestion.question} </div>
+<div class="answers"> ${answers.join('')} </div>`);
+    }
+  );
+  quizContainer.innerHTML = output.join('');
 }
 
 function showResults() {
