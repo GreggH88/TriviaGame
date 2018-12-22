@@ -52,7 +52,7 @@ var questionList = [{
       b: "Silly",
       c: "Hungry"
     },
-    correctAnswer: "c"
+    correctAnswer: "a"
   }
 ];
 // function containing quiz logic
