@@ -1,8 +1,8 @@
 .body {
-  background-image: url(assets/images/marvel-comics-wallpapers.jpg);
+  background-image: url("../images/marvel-comics-wallpapers.jpg");
   background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: center;
+  /* background-attachment: fixed;
+  background-position: center; */
 }
 .mainContainerWrap {
   width: 960px;
@@ -15,6 +15,7 @@
   background-color: yellow;
   text-align: center;
   font-weight: bolder;
+  
 }
 
 .quizContainerWrap {
@@ -22,12 +23,19 @@
 }
 
 #wrapper {
-  width: 560px;
+  padding-top: 100px;
+  margin-top: 30px;
   margin: auto;
+  border-style: groove;
+  top: 200px;
+  height: auto;
+  padding-top: 15px;
 }
 #show-timer {
+  text-align: center;
+  width: 50px;
+  border-width: 2px;
   border-style: solid;
-  border-color: red;
   height: auto;
   float: right;
   font-size: 20px;

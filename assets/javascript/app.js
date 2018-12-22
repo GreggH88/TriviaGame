@@ -4,35 +4,53 @@ var resultsContainer = document.getElementById('results');
 var submitButton = document.getElementById('submit');
 
 // Timer variables
-var timerLimit = 10;
+var timerLimit = 91;
 var intervalId;
 
 
 // list of questions and answers
 var questionList = [{
-    question: "Where is albaqerque?",
+    question: "What is superman's weakness?",
     answers: {
-      a: "How should I know?",
-      b: "Thataway <==>",
-      c: "Back by that wrong turn."
+      a: "Plutonium.",
+      b: "Krytonite.",
+      c: "The human spirit."
+    },
+    correctAnswer: "b"
+  },
+  {
+    question: "What is batman's butlers' name?",
+    answers: {
+      a: "Alfred",
+      b: "Woodhouse",
+      c: "Jeeves"
+    },
+    correctAnswer: "a"
+  },
+  {
+    question: "What animals' bite gave Peter Parker his super powers?",
+    answers: {
+      a: "Spider",
+      b: "Wolf",
+      c: "Hampster"
+    },
+    correctAnswer: "a"
+  },
+  {
+    question: "What is Captain America's shield made out of?",
+    answers: {
+      a: "Adamantium",
+      b: "Gold-Titanium Alloy",
+      c: "Vibranium"
     },
     correctAnswer: "c"
   },
   {
-    question: "Question2?",
+    question: "What is the Hulks most common mind state?",
     answers: {
-      a: "A",
-      b: "B",
-      c: "C"
-    },
-    correctAnswer: "c"
-  },
-  {
-    question: "Question3?",
-    answers: {
-      a: "A",
-      b: "B",
-      c: "C"
+      a: "Angry",
+      b: "Silly",
+      c: "Hungry"
     },
     correctAnswer: "c"
   }
@@ -52,7 +70,7 @@ function runQuiz() {
 name="question${questionNumber}" value="${letter}"> 
             ${letter} : 
             ${currentQuestion.answers[letter]}
-          </label>`
+          </label><br>`
         );
       }
       // adds the html for this question and its answers to the output array
@@ -81,15 +99,14 @@ function showResults() {
     if (userAnswer === currentQuestion.correctAnswer) {
       // increment correct answer counter by 1
       numCorrect++;
-      // color the correct answer green
-      answerContainers[questionNumber].getElementsByClassName.color = 'green';
-    } else {
-      // else color the incorrect or empty answer red
-      answerContainers[questionNumber].getElementsByClassName.color = 'red';
     }
   });
   // displays nubmer of correctly answered questions out of total
-  resultsContainer.innerHTML ='You got'  + numCorrect + ' out of ' + questionList.length + ' questions correct!';
+  resultsContainer.innerHTML ='You got '  + numCorrect + ' out of ' + questionList.length + ' questions correct!';
+  // stops the timer
+  timerLimit = 0;
+  stop();
+  clearInterval(intervalId);
 }
 
 
@@ -101,8 +118,6 @@ function decrement() {
   timerLimit--;
   $("#show-timer").html("<h2>" + timerLimit + "</h2>");
   if (timerLimit === 0) {
-    stop();
-    clearInterval(intervalId);
     showResults();
     
   }
