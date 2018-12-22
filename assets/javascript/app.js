@@ -4,7 +4,7 @@ var resultsContainer = document.getElementById('results');
 var submitButton = document.getElementById('submit');
 
 // Timer variables
-var timerLimit = 90;
+var timerLimit = 10;
 var intervalId;
 
 
@@ -82,18 +82,18 @@ function showResults() {
       // increment correct answer counter by 1
       numCorrect++;
       // color the correct answer green
-      answerContainers[questionNumber].getElementsByClassName.color = 'lightgreen';
+      answerContainers[questionNumber].getElementsByClassName.color = 'green';
     } else {
       // else color the incorrect or empty answer red
       answerContainers[questionNumber].getElementsByClassName.color = 'red';
     }
   });
   // displays nubmer of correctly answered questions out of total
-  resultsContainer.innerHTML = numCorrect + ' out of ' + questionList.length;
+  resultsContainer.innerHTML ='You got'  + numCorrect + ' out of ' + questionList.length + ' questions correct!';
 }
 
 
-function run() {
+function timer() {
   clearInterval(intervalId);
   intervalId = setInterval(decrement, 1000);
 }
@@ -102,7 +102,9 @@ function decrement() {
   $("#show-timer").html("<h2>" + timerLimit + "</h2>");
   if (timerLimit === 0) {
     stop();
-    alert("Time Up!");
+    clearInterval(intervalId);
+    showResults();
+    
   }
 }
 // run quiz
